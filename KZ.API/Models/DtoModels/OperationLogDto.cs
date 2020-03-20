@@ -11,7 +11,7 @@ namespace KZ.API.Models.DtoModels
         public string Username { get; set; }
         public string Module { get; set; }
         public string LogType { get; set; }
-        public DateTime OperationTime { get; set; }
+        public string OperationTime { get; set; }
         public string IPAddress { get; set; }
         public string Details { get; set; }
     }

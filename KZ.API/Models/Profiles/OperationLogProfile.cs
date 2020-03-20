@@ -18,6 +18,8 @@ namespace KZ.API.Models.Profiles
                 opt => opt.MapFrom((log, dto) => _moduleDict[log.Module]))
                 .ForMember(dest => dest.LogType,
                 opt => opt.MapFrom((log, dto) => _logTypeDict[log.LogType]))
+                .ForMember(dest => dest.OperationTime,
+                opt => opt.MapFrom((log, dto) => log.OperationTime.ToString("yyyy-MM-dd HH:mm:ss")))
                 .ForMember(dest => dest.IPAddress,
                 opt => opt.MapFrom((log, dto) => IPAddressHelper.NumberToIpString(log.IPAddress)));
         }

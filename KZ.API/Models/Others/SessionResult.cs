@@ -9,9 +9,19 @@ namespace KZ.API.Models.Others
     {
         public string SessionId { get; set; }
         public string Username { get; set; }
-        public DateTime LoginTime { get; set; }
-        public DateTime LastActiveTime { get; set; }
+        public string LoginTime { get; set; }
+        public string LastActiveTime { get; set; }
         public string RemoteEndPoint { get; set; }
-        public string ConnectionTime => (DateTime.Now - LoginTime).ToString();
+        public string ConnectionTime { get; }
+
+        public SessionResult(string sessionId, string username, DateTime loginTime, DateTime lastActiveTime, string remoteEndPoint)
+        {
+            SessionId = sessionId;
+            Username = username;
+            LoginTime = loginTime.ToString("yyyy-MM-dd HH:mm:ss");
+            LastActiveTime = lastActiveTime.ToString("yyyy-MM-dd HH:mm:ss");
+            RemoteEndPoint = remoteEndPoint;
+            ConnectionTime = (DateTime.Now - loginTime).ToString(@"d\d\ hh\:mm\:ss");
+        }
     }
 }

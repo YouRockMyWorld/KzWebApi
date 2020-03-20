@@ -32,14 +32,7 @@ namespace KZ.API.Repository
             return values.Select<string, SessionResult>(s =>
             {
                 string[] args = s.Split('|');
-                return new SessionResult
-                {
-                    SessionId = args[0],
-                    Username = args[1],
-                    LoginTime = DateTime.Parse(args[2]),
-                    LastActiveTime = DateTime.Parse(args[3]),
-                    RemoteEndPoint = args[4]
-                };
+                return new SessionResult(args[0], args[1], DateTime.Parse(args[2]), DateTime.Parse(args[3]), args[4]);
             });
         }
     }

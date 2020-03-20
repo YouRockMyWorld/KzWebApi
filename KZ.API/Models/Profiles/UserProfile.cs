@@ -14,17 +14,17 @@ namespace KZ.API.Models.Profiles
         {
             CreateMap<KzUser, UserDto>()
                 .ForMember(
-                dest => dest.Email,
+                dest => dest.Phone,
                 opt => opt.MapFrom((user, str) =>
                 {
-                    string[] s = user.Email.Split('@');
-                    if (s[0].Length > 3)
+                    string p = user.Phone.Trim();
+                    if (p.Length == 11)
                     {
-                        return $"{s[0].Substring(0, 3)}***@{s[1]}";
+                        return p.Substring(0, 3) + "****" + p.Substring(7);
                     }
                     else
                     {
-                        return $"{s[0]}***@{s[1]}";
+                        return string.Empty;
                     }
                 }));
         }
